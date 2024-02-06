@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #f7fafc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    img {
+      height: 200px;
+    }
+
+    .message {
+      font-size: 4xl;
+      margin: 1rem 0;
+    }
+
+    button {
+      font-size: 1rem;
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 0.25rem;
+    }
+
+    .yes {
+      background-color: #48bb78;
+      color: white;
+    }
+
+    .no {
+      background-color: #f56565;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Teddy Bear">
+  <h1 class="message">Will you be my Valentine?</h1>
+
+  <button class="yes" onclick="setYesPressed(true)">Yes</button>
+  <button class="no" onclick="handleNoClick()">No</button>
+
+  <script>
+    let noCount = 0;
+    let yesPressed = false;
+
+    function handleNoClick() {
+      noCount++;
+      updateNoButtonText();
+    }
+
+    function updateNoButtonText() {
+      const phrases = [
+        "No",
+        "Are you sure?",
+        "Really sure?",
+        "Think again!",
+        "Last chance!",
+        "Surely not?",
+        "You might regret this!",
+        "Give it another thought!",
+        "Are you absolutely certain?",
+        "This could be a mistake!",
+        "Have a heart!",
+        "Don't be so cold!",
+        "Change of heart?",
+        "Wouldn't you reconsider?",
+        "Is that your final answer?",
+        "You're breaking my heart ;(",
+      ];
+
+      const buttonText = noCount === 0 ? "No" : phrases[Math.min(noCount, phrases.length - 1)];
+      document.querySelector('.no').textContent = buttonText;
+    }
+
+    function setYesPressed(value) {
+      yesPressed = value;
+      if (yesPressed) {
+        showYesContent();
+      }
+    }
+
+    function showYesContent() {
+      document.body.innerHTML = `
+        <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Happy Bear">
+        <div class="message text-4xl font-bold my-4">Ok yay!!!</div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
